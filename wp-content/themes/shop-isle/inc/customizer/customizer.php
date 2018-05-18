@@ -29,8 +29,58 @@ function shop_isle_customize_register( $wp_customize ) {
 		'shop_isle_front_page_sections', array(
 			'priority' => 42,
 			'title'    => esc_html__( 'Frontpage sections', 'shop-isle' ),
+		));
+  /*JM Development */      
+    
+    $wp_customize->add_panel(
+		'shop_isle_extra_sections', array(
+			'priority' => 52,
+			'title'    => esc_html__( 'Extra', 'shop-isle' ),
+		));
+    
+    
+   $wp_customize->add_section(
+		'shop_isle_about_section', array(
+			'title'    => __( 'About ', 'shop-isle' ),
+			'priority' => 14,
+			'panel'    => 'shop_isle_extra_sections',
 		)
 	);
+
+	/* Hide big title section */
+	$wp_customize->add_setting(
+		'shop_isle_about', array(
+			'sanitize_callback' => 'shop_isle_sanitize_text',
+			'transport'         => 'postMessage',
+		)
+	);
+
+	$wp_customize->add_control(
+		'shop_isle_about',
+		array(
+			 'label' => __( 'Default Text Control' ),
+      'description' => esc_html__( 'Text controls Type can be either text, email, url, number, hidden, or date' ),
+      'section' => 'shop_isle_about_section',
+      'priority' => 10, // Optional. Order priority to load the control. Default: 10
+      'type' => 'text', // Can be either text, email, url, number, hidden, or date
+      'capability' => 'edit_theme_options', // Optional. Default: 'edit_theme_options'
+      'input_attrs' => array( // Optional.
+         'class' => 'my-custom-class',
+         'style' => 'border: 1px solid rebeccapurple',
+         'placeholder' => __( 'Enter name...' ),
+		))
+	);
+    
+
+    
+    
+    
+    
+    
+  
+    
+    
+	
 }
 /**
  * Repeater Sanitization function

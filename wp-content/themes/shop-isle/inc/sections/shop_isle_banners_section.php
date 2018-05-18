@@ -12,6 +12,13 @@
 		$shop_isle_banners_hide  = get_theme_mod( 'shop_isle_banners_hide' );
 		$shop_isle_banners_title = get_theme_mod( 'shop_isle_banners_title' );
 
+/*JM Dev*/
+$shop_isle_about_title = get_theme_mod('shop_isle_about');
+echo '<h1>'; echo $shop_isle_about_title ; echo '</h1>' ;
+/*JM Dev*/
+
+
+
 if ( isset( $shop_isle_banners_hide ) && $shop_isle_banners_hide != 1 ) :
 	echo '<section class="module-small home-banners">';
 		elseif ( is_customize_preview() ) :
